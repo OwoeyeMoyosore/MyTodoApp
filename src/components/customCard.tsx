@@ -5,7 +5,7 @@ import React from 'react'
 const CustomCard :React.FC<CustomCardProps> = ({description,name,handleDelete,handleEdit}) => {
     return(
         <React.Fragment>
-        <Typography>Todo List</Typography>
+        <Typography>Todo</Typography>
         <Card sx={{mt: 5, minWidth: 275}}>
             
             <CardContent>

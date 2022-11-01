@@ -13,10 +13,10 @@ const App: React.FC = () => {
   });
   const [allTodo,setAllTodo] = React.useState<CardDto[]>([]);
   const [isEdit, setEdit] = React.useState(false)
-  const [index,setIndex] = React.useState(1);
+  const [index,setIndex] = React.useState(0);
   const [show,setShow] = React.useState(false)
   
-  const handleTodo = (type: "add" | "delete" |"update", ind?: number) => {
+  const handleTodo = (type: "add" | "delete" |"update", ind?: object) => {
     if(type === "add"){
       allTodo.push(todo);
       setTodo({
@@ -34,7 +34,7 @@ const App: React.FC = () => {
     }
 
     if (type === "update"){
-      let data = {ind, name:todo.name, description: todo.description}
+      let data = {...ind, name:todo.name, description: todo.description}
       setTodo(data);
       let newTodo = allTodo.map(ind => {
         if(allTodo.indexOf(ind) === index){
@@ -58,11 +58,14 @@ const App: React.FC = () => {
   };
 
   const style = {
+    display: "flex",
+    flexDirection: 'column',
+    gap: 4,
     position : "absolute" as "absolute",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 600,
+    width: {xs: 300, md:400},
     bgcolor: "background.paper",
     border: "2px solid #000",
     boxShadow: 24,
